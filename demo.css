@@ -1,0 +1,58 @@
+/* ai coding: 增加预览原文的简洁杂志排版与响应式入口 2026/11/05: 09:21 */
+:root {
+  color-scheme: light;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #262622;
+  background: #f8f7f4;
+  font-synthesis: none;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+.demo-navigation {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 30px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid #e8e6df;
+}
+.demo-brand { color: inherit; text-decoration: none; font-size: 20px; font-weight: 600; letter-spacing: -0.8px; }
+.demo-brand span { font-size: 13px; font-weight: 400; color: #83817a; letter-spacing: 0; margin-left: 9px; }
+#demo-open-reader {
+  border: 1px solid #dcdad2;
+  border-radius: 7px;
+  background: transparent;
+  color: #44443e;
+  font: inherit;
+  font-size: 13px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+#demo-open-reader:hover { background: #edece5; }
+#demo-open-reader:focus-visible { outline: 2px solid #636358; outline-offset: 4px; }
+#demo-open-reader span { margin-left: 12px; }
+.demo-article { width: min(740px, calc(100% - 48px)); margin: 76px auto 100px; }
+.eyebrow { font-size: 11px; letter-spacing: 2px; color: #8b897f; margin: 0 0 26px; }
+.demo-article h1 { font-family: "Songti SC", "STSong", "Noto Serif CJK SC", Georgia, serif; font-size: clamp(32px, 5vw, 48px); font-weight: 600; line-height: 1.4; letter-spacing: -1.4px; margin: 0 0 20px; }
+.deck { color: #77756b; line-height: 1.7; font-size: 18px; margin: 0 0 28px; }
+.demo-meta { display: flex; align-items: center; gap: 14px; color: #8a877d; font-size: 12px; padding-bottom: 30px; border-bottom: 1px solid #dfddd5; }
+.demo-meta p { margin: 0; }
+.demo-body { padding-top: 28px; font-family: "Songti SC", "STSong", "Noto Serif CJK SC", Georgia, serif; font-size: 20px; line-height: 1.95; }
+.demo-body p { margin: 0 0 24px; }
+.demo-body h2 { font-size: 25px; font-weight: 600; margin: 50px 0 22px; line-height: 1.5; }
+.demo-body blockquote { border-left: 2px solid #adab9b; margin: 35px 0; padding: 3px 0 3px 25px; color: #77756b; }
+.demo-body blockquote p { margin: 0; }
+.demo-body ul { padding-left: 26px; margin: 26px 0; }
+.demo-body li { padding-left: 5px; margin: 10px 0; }
+.demo-footer { width: min(740px, calc(100% - 48px)); margin: 0 auto; border-top: 1px solid #e1dfd6; padding: 28px 0 50px; color: #939085; font-size: 12px; }
+.demo-footer span { letter-spacing: 2px; font-size: 10px; }
+.demo-footer p { margin: 12px 0 0; }
+@media (max-width: 600px) {
+  .demo-navigation { padding: 22px 24px; gap: 12px; }
+  .demo-brand span { display: none; }
+  .demo-article { margin-top: 48px; }
+  .demo-body { font-size: 18px; }
+  .demo-meta { gap: 9px; font-size: 11px; }
+}

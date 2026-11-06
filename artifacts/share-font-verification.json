@@ -1,0 +1,44 @@
+{
+  "version": "1.4.4",
+  "results": [
+    {
+      "size": 12,
+      "font": "serif",
+      "readingFont": "\"Songti SC\", STSong, \"Noto Serif CJK SC\", \"Source Han Serif SC\", Georgia, \"Times New Roman\", serif",
+      "readingSize": 12,
+      "readingWeight": "400",
+      "drawnFont": "18px \"Songti SC\", STSong, \"Noto Serif CJK SC\", \"Source Han Serif SC\", Georgia, \"Times New Roman\", serif",
+      "scale": 0.3333333333333333,
+      "captionPresent": false,
+      "floatingCount": 0,
+      "effectiveFontSize": 6,
+      "qrURL": "http://127.0.0.1:4173/demo.html?v=1.4.4"
+    },
+    {
+      "size": 21,
+      "font": "serif",
+      "readingFont": "\"Songti SC\", STSong, \"Noto Serif CJK SC\", \"Source Han Serif SC\", Georgia, \"Times New Roman\", serif",
+      "readingSize": 21,
+      "readingWeight": "400",
+      "drawnFont": "45px \"Songti SC\", STSong, \"Noto Serif CJK SC\", \"Source Han Serif SC\", Georgia, \"Times New Roman\", serif",
+      "scale": 0.3333333333333333,
+      "captionPresent": false,
+      "floatingCount": 0,
+      "effectiveFontSize": 15,
+      "qrURL": "http://127.0.0.1:4173/demo.html?v=1.4.4"
+    },
+    {
+      "size": 28,
+      "font": "sans",
+      "readingFont": "-apple-system, \"system-ui\", \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+      "readingSize": 28,
+      "readingWeight": "400",
+      "drawnFont": "66px -apple-system, \"system-ui\", \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+      "scale": 0.3333333333333333,
+      "captionPresent": false,
+      "floatingCount": 0,
+      "effectiveFontSize": 22,
+      "qrURL": "http://127.0.0.1:4173/demo.html?v=1.4.4"
+    }
+  ]
+}

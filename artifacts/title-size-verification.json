@@ -1,0 +1,63 @@
+{
+  "checks": [
+    "both font families synchronize main title, deck, headings and body",
+    "default 21px preserves desktop title proportions",
+    "12px minimum scales title and headings and disables both decrement controls",
+    "incrementing from minimum enables decrement and 28px scales every heading",
+    "mobile and wide-screen titles retain responsive scaling",
+    "12px survives reload together with paper and layout preferences",
+    "native toolbar reduces to 12px and scales title, subtitle and section heading",
+    "local extension preferences save 12px without losing paper, spacing, width or theme",
+    "browser restart restores 12px and proportionate heading typography"
+  ],
+  "errors": [],
+  "restart": {
+    "stored": {
+      "contentWidth": 920,
+      "font": "serif",
+      "paper": "grain",
+      "paragraphGap": 44,
+      "size": 12,
+      "texture": 70,
+      "theme": "black",
+      "toc": true,
+      "width": "standard"
+    },
+    "restored": {
+      "closed": true,
+      "fonts": {
+        ".article-content": {
+          "family": "\"Songti SC\", STSong, \"Noto Serif CJK SC\", \"Source Han Serif SC\", Georgia, \"Times New Roman\", serif",
+          "size": "12px"
+        },
+        ".article-content h2": {
+          "family": "\"Songti SC\", STSong, \"Noto Serif CJK SC\", \"Source Han Serif SC\", Georgia, \"Times New Roman\", serif",
+          "size": "16.32px"
+        },
+        ".article-deck": {
+          "family": "\"Songti SC\", STSong, \"Noto Serif CJK SC\", \"Source Han Serif SC\", Georgia, \"Times New Roman\", serif",
+          "size": "12.5714px"
+        },
+        ".article-title": {
+          "family": "\"Songti SC\", STSong, \"Noto Serif CJK SC\", \"Source Han Serif SC\", Georgia, \"Times New Roman\", serif",
+          "size": "27.4286px"
+        }
+      },
+      "gap": "44px",
+      "minus": {
+        "x": 1181,
+        "y": 38
+      },
+      "minusDisabled": [
+        true,
+        true
+      ],
+      "paper": "grain",
+      "values": [
+        "12",
+        "12"
+      ],
+      "width": 920
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "passed": [
+    "long article extraction and closed Shadow DOM",
+    "black theme switches and persists after reload",
+    "typography, width and bounded font size persist",
+    "TOC jumps and reading progress reflect real scroll",
+    "Escape dismisses settings first, then restores original page",
+    "repeated script injection toggles reader",
+    "same-document article navigation resets old progress",
+    "mobile layout, theme and TOC states",
+    "site suffix titles and Readability heading conversion do not duplicate titles",
+    "sanitizer strips executable HTML and keeps safe external links",
+    "empty pages show useful state with keyboard focus containment"
+  ],
+  "errors": []
+}

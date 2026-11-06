@@ -1,0 +1,31 @@
+{
+  "version": "1.5.1",
+  "results": [
+    "旧偏好默认显示四种正文图片",
+    "关闭后无活动图片且图注和纯图片容器不占空间，混合文字与目录保持",
+    "重新开启完整恢复图片图注和原链接",
+    "刷新和退出后重新进入保持不渲染图片",
+    "恢复默认设置重新显示图片",
+    "手机布局无横向溢出且空格键可以切换图片",
+    "图片图标紧邻目录，无重复开关和 tooltip，320–768px 工具栏可完整使用"
+  ],
+  "images": [
+    {
+      "src": "http://127.0.0.1:4173/artifacts/image-sample.png?figure",
+      "alt": "正文图片"
+    },
+    {
+      "src": "http://127.0.0.1:4173/artifacts/image-sample.png?linked",
+      "alt": "链接图片"
+    },
+    {
+      "src": "http://127.0.0.1:4173/artifacts/image-sample.png?inline",
+      "alt": "行内图片"
+    },
+    {
+      "src": "http://127.0.0.1:4173/artifacts/image-sample.png?lazy",
+      "alt": "延迟加载图片"
+    }
+  ],
+  "errors": []
+}

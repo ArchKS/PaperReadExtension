@@ -1,0 +1,17 @@
+{
+  "passed": [
+    "plain paper default and initial exact content width",
+    "fiber paper and adjustable texture strength",
+    "parchment paper has distinct tint and readable black skin",
+    "paragraph gap is the exact requested pixel value",
+    "wide content becomes floating TOC without clipping",
+    "compact content restores inline TOC and preset buttons",
+    "range controls support keyboard navigation without restarting reader",
+    "paper and layout preferences survive page reload",
+    "short viewport settings remain scrollable and reachable",
+    "mobile pixel width and measured page margins are accurate",
+    "reset restores all paper and layout defaults",
+    "legacy width preference migrates without losing previous font or skin"
+  ],
+  "errors": []
+}

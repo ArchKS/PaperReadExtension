@@ -1,0 +1,21 @@
+{
+  "version": "1.3.0",
+  "checks": [
+    "旧偏好补充默认行距，原有段距保留",
+    "键盘上下限改变实际文字行位置及引用行距",
+    "原网页样式不会覆盖阅读行距",
+    "刷新和 chrome.storage.local 保存行距及已有纸张偏好",
+    "浏览器重启、手机宽度和十二像素字号沿用行距",
+    "恢复默认同时还原行距与段距"
+  ],
+  "mobile": {
+    "label": "2.60 倍",
+    "lineHeight": 31.2,
+    "fontSize": 12,
+    "actualDistance": 31.1875,
+    "gap": 44,
+    "quoteRatio": 2.6,
+    "overflow": false
+  },
+  "errors": []
+}

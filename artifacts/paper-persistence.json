@@ -1,0 +1,30 @@
+{
+  "checks": [
+    "paper, texture, paragraph spacing and exact width apply together with old theme and font preferences",
+    "chrome.storage.local stores all six new and existing preferences",
+    "browser restart with the original extension preserves paper and measured layout as well as font and color"
+  ],
+  "expected": {
+    "paper": "parchment",
+    "texture": 70,
+    "paragraphGap": 44,
+    "contentWidth": 920,
+    "theme": "black",
+    "size": 26
+  },
+  "restored": {
+    "background": "rgb(40, 37, 31)",
+    "closed": true,
+    "contentWidth": 920,
+    "fontSize": "26px",
+    "gapValue": "44 px",
+    "paper": "parchment",
+    "paragraphGap": "44px",
+    "sidebar": "inline",
+    "textureOpacity": "0.126",
+    "theme": "black",
+    "widthValue": "920 px"
+  },
+  "errors": [],
+  "screenshot": "/tmp/readmode-paper-persistence.png"
+}

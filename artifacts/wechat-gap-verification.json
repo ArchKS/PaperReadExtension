@@ -1,0 +1,86 @@
+{
+  "version": "1.3.1",
+  "source": "https://mp.weixin.qq.com/s/yBIHqBYDec6hbdM9f8mzIg",
+  "sourceCounts": {
+    "br": 4,
+    "div": 0,
+    "p": 1,
+    "section": 31
+  },
+  "before": {
+    "tags": [
+      "P",
+      "P"
+    ],
+    "gap": 8,
+    "margin": "8px",
+    "lineHeight": 40.95,
+    "lineDistance": 40.9375,
+    "number": "8 px",
+    "lists": 3,
+    "paragraphs": 26
+  },
+  "after": {
+    "tags": [
+      "P",
+      "P"
+    ],
+    "gap": 64,
+    "margin": "64px",
+    "lineHeight": 40.95,
+    "lineDistance": 40.9375,
+    "number": "64 px",
+    "lists": 3,
+    "paragraphs": 26
+  },
+  "lines": {
+    "tags": [
+      "P",
+      "P"
+    ],
+    "gap": 64,
+    "margin": "64px",
+    "lineHeight": 25.2,
+    "lineDistance": 25.1875,
+    "number": "64 px",
+    "lists": 3,
+    "paragraphs": 26
+  },
+  "restored": {
+    "tags": [
+      "P",
+      "P"
+    ],
+    "gap": 64,
+    "margin": "64px",
+    "lineHeight": 25.2,
+    "lineDistance": 25.1875,
+    "number": "64 px",
+    "lists": 3,
+    "paragraphs": 26
+  },
+  "mobile": {
+    "tags": [
+      "P",
+      "P"
+    ],
+    "gap": 64,
+    "margin": "64px",
+    "lineHeight": 25.2,
+    "lineDistance": 25.1875,
+    "number": "64 px",
+    "lists": 3,
+    "paragraphs": 26
+  },
+  "preserved": {
+    "targetTag": "P",
+    "wrapperTag": "SECTION",
+    "listParagraph": true,
+    "figure": true,
+    "code": "let x = 1;\nlet y = 2;",
+    "softBreak": true,
+    "heading": "章节",
+    "ordinaryParagraph": "这是一段用于验证网页结构保持完整的正文。这是一段用于验证网页结构保持完整的正文。这是一段用于验证网页结构保持完整的正文。这是一段用于验证网页结构保持完整的正文。这是一段用于验证网页结构保持完整的正文。这是一段用于验证网页结构保持完整的正文。这是一段用于验证网页结构保持完整的正文。这是一段用于验证网页结构保持完整的正文。这是一段用于验证网页结构保持完整的正文。这是一段用于验证网页结构保持完整的正文。这是一段用于验证网页结构保持完整的正文。这是一段用于验证网页结构保持完整的正文。"
+  },
+  "errors": []
+}

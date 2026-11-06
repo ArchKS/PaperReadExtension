@@ -1,0 +1,13 @@
+{
+  "checks": [
+    "desktop toolbar and settings both show 26px",
+    "chrome.storage.local stores 26px",
+    "mobile body uses the actual saved 26px without a 24px cap",
+    "closing and reopening preserves 26px",
+    "page reload preserves 26px",
+    "another article tab inherits 26px",
+    "browser restart with the same profile preserves 26px"
+  ],
+  "errors": [],
+  "screenshot": "/tmp/readmode-font-persistence.png"
+}

@@ -1,0 +1,21 @@
+{
+  "version": "1.2.3",
+  "browser": "Codex in-app browser",
+  "before": {
+    "label": "26 px",
+    "computedMargin": 26,
+    "actualGap": 26
+  },
+  "afterPointerDrag": {
+    "label": "64 px",
+    "computedMargin": 64,
+    "actualGap": 64
+  },
+  "afterReload": {
+    "label": "64 px",
+    "computedMargin": 64,
+    "actualGap": 64
+  },
+  "lineHeight": 40.95,
+  "note": "段距指两个段落之间的留白；段内行距保持不变。开放 Shadow DOM 消除了预览自动化对封闭阅读控件的访问限制；尚未复现数字变化而段距不变。"
+}

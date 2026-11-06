@@ -1,0 +1,58 @@
+{
+  "version": "1.4.3",
+  "results": [
+    {
+      "case": "雪球真实正文",
+      "author": "冬日寒夜残灯",
+      "date": "2026-11-05 11:21",
+      "source": "雪球 · 福建",
+      "iso": "2026-11-05T03:21:09.000Z",
+      "authorHidden": false,
+      "dateHidden": false,
+      "dots": 0,
+      "headerInBody": false,
+      "fields": 3,
+      "overflow": false
+    },
+    {
+      "case": "手机布局",
+      "author": "冬日寒夜残灯",
+      "date": "2026-11-05 11:21",
+      "source": "雪球 · 福建",
+      "iso": "2026-11-05T03:21:09.000Z",
+      "authorHidden": false,
+      "dateHidden": false,
+      "dots": 0,
+      "headerInBody": false,
+      "fields": 3,
+      "overflow": false
+    },
+    {
+      "case": "通用作者与 ISO 时间",
+      "author": "ReadMode 编辑部",
+      "date": "2026-11-05 09:00",
+      "source": "ReadMode Journal",
+      "iso": "2026-11-05T01:00:00.000Z",
+      "authorHidden": false,
+      "dateHidden": false,
+      "dots": 0,
+      "headerInBody": false,
+      "fields": 3,
+      "overflow": false
+    },
+    {
+      "case": "缺失字段",
+      "author": "",
+      "date": "",
+      "source": "127.0.0.1",
+      "iso": "",
+      "authorHidden": true,
+      "dateHidden": true,
+      "dots": 0,
+      "headerInBody": false,
+      "fields": 3,
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

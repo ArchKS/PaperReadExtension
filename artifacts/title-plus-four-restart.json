@@ -1,0 +1,56 @@
+{
+  "checks": [
+    "native toolbar sets body to 12px and every title to 16px",
+    "local extension preferences save 12px without losing paper, spacing, width or theme",
+    "browser restart restores 12px body and fixed plus-four title sizes"
+  ],
+  "stored": {
+    "contentWidth": 920,
+    "font": "serif",
+    "paper": "grain",
+    "paragraphGap": 44,
+    "size": 12,
+    "texture": 70,
+    "theme": "black",
+    "toc": true,
+    "width": "standard"
+  },
+  "restored": {
+    "closed": true,
+    "fonts": {
+      ".article-content": {
+        "family": "\"Songti SC\", STSong, \"Noto Serif CJK SC\", \"Source Han Serif SC\", Georgia, \"Times New Roman\", serif",
+        "size": "12px"
+      },
+      ".article-content h2": {
+        "family": "\"Songti SC\", STSong, \"Noto Serif CJK SC\", \"Source Han Serif SC\", Georgia, \"Times New Roman\", serif",
+        "size": "16px"
+      },
+      ".article-deck": {
+        "family": "\"Songti SC\", STSong, \"Noto Serif CJK SC\", \"Source Han Serif SC\", Georgia, \"Times New Roman\", serif",
+        "size": "16px"
+      },
+      ".article-title": {
+        "family": "\"Songti SC\", STSong, \"Noto Serif CJK SC\", \"Source Han Serif SC\", Georgia, \"Times New Roman\", serif",
+        "size": "16px"
+      }
+    },
+    "gap": "44px",
+    "minus": {
+      "x": 1181,
+      "y": 38
+    },
+    "minusDisabled": [
+      true,
+      true
+    ],
+    "paper": "grain",
+    "values": [
+      "12",
+      "12"
+    ],
+    "width": 920
+  },
+  "errors": [],
+  "screenshot": "/tmp/readmode-plus-four-restart.png"
+}
