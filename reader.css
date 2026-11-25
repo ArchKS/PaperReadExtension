@@ -254,12 +254,20 @@ svg { display: block; width: 24px; height: 24px; flex-shrink: 0; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; } }
 @media print {
   /* ai coding: 打印时隐藏阅读控件和纸张纹理以保持正文清晰 2026/11/05: 09:52 */
-  .toolbar, .reading-progress, .reader-sidebar, .right-gutter, .statusbar, .back-top, .paper-texture { display: none !important; }
-  .reader-shell { display: block; height: auto; background: white; color: black; }
-  .reader-viewport { overflow: visible; height: auto; }
-  .reading-layout { display: block; padding: 0; max-width: none; }
-  .article-content, .article-title, .article-deck { color: black; }
-  .article-content a { color: black; }
+  .toolbar, .reading-progress, .reader-sidebar, .right-gutter, .statusbar, .back-top, .paper-texture, .share-overlay, .empty-close, .empty-return { display: none !important; }
+  /* ai coding: 导出 PDF 时按白底黑字重置阅读皮肤并让正文跨页自然分页 2026/11/25: 15:36 */
+  .reader-shell { display: block !important; height: auto !important; background: #fff !important; background-image: none !important; color: #000 !important; color-scheme: light !important; --paper: #fff !important; --bar: #fff !important; --ink: #000 !important; --secondary: #40403c !important; --muted: #6f6f6a !important; --line: #d6d6d0 !important; --soft: #f4f4f1 !important; --hover: #f4f4f1 !important; --panel: #fff !important; --accent: #000 !important; --paper-texture-opacity: 0 !important; }
+  .reader-viewport { display: block !important; overflow: visible !important; height: auto !important; }
+  .reading-layout { display: block !important; padding: 0 !important; max-width: none !important; }
+  .reader-main { width: auto !important; max-width: min(var(--content-width), 170mm); margin: 0 auto !important; padding-bottom: 0 !important; }
+  .article-content, .article-title, .article-deck { color: #000 !important; }
+  .article-content a { color: #000 !important; }
+  /* ai coding: 分页时避免标题孤行并整体保留图片引用代码块与表格 2026/11/25: 15:36 */
+  .article-content h1, .article-content h2, .article-content h3, .article-content h4, .article-content h5, .article-content h6 { break-after: avoid; }
+  .article-header, .article-content figure, .article-content img, .article-content blockquote, .article-content table, .article-content pre { break-inside: avoid; }
+  .article-content p { orphans: 3; widows: 3; }
+  .article-content pre { overflow: visible; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .article-content table { display: table !important; overflow: visible !important; width: auto !important; }
 }
 
 /* ai coding: 窄屏仅保留品牌图形以容纳目录旁新增图片按钮 2026/11/06: 14:33 */

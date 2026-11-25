@@ -13,7 +13,7 @@
   // ai coding: 更新目录旁图片图标的预览样式版本 2026/11/06: 14:33
   const styleURL = hasExtension
     ? chrome.runtime.getURL("reader.css")
-    : new URL("reader.css?v=1.5.1", scriptURL || location.href).href;
+    : new URL("reader.css?v=1.6.0", scriptURL || location.href).href;
   // ai coding: 新增默认显示图片偏好并保留现有阅读排版设置 2026/11/06: 14:28
   const defaults = { theme: "white", font: "serif", size: 21, width: "standard", contentWidth: 720, paper: "plain", texture: 35, paragraphGap: 24, lineHeight: 1.95, showImages: true, toc: true };
   // ai coding: 统一将字号下限设为十二像素并保留原字号上限 2026/11/05: 10:01
@@ -21,6 +21,11 @@
   const presetWidths = { narrow: 600, standard: 720, wide: 850 };
   // ai coding: 在宽松排版无法容纳侧栏时改用浮动目录 2026/11/05: 09:30
   const SIDEBAR_BREAKPOINT = 1340;
+  // ai coding: 新增宿主样式表文本以便导出 PDF 时把覆盖层切换为文档流 2026/11/25: 15:36
+  const HOST_STYLE_TEXT = `#__readmode_root__{all:initial!important;position:fixed!important;inset:0!important;z-index:2147483647!important;display:block!important;width:100vw!important;height:100vh!important;isolation:isolate!important;color-scheme:normal!important;}
+html:has(> #__readmode_root__){overflow:hidden!important;}
+@page{margin:14mm 12mm;}
+@media print{#__readmode_root__{position:static!important;inset:auto!important;z-index:auto!important;width:auto!important;height:auto!important;isolation:auto!important;}html:has(> #__readmode_root__){overflow:visible!important;}html:has(> #__readmode_root__)>body{display:none!important;}}`;
   // ai coding: 移除文章页尾专用的原文跳转图标 2026/11/05: 09:41
   const icons = {
     book: '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5.5C8.5 3.5 5 4 3 5v14c3-1.5 6-1.5 9 .5 3-2 6-2 9-.5V5c-2-1-5.5-1.5-9 .5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 5.5v14" stroke="currentColor" stroke-width="1.5"/></svg>',
@@ -30,9 +35,13 @@
     images: '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="m4 17 5-5 4 4 3-3 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path class="image-off-stroke" d="m3 3 18 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
     arrow: '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 12 6-6 6 6M12 6v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     clock: '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5.75" stroke="currentColor"/><path d="M8 4.5V8l2.5 1.5" stroke="currentColor" stroke-linecap="round"/></svg>',
+    // ai coding: 新增导出 PDF 的文档下载图标 2026/11/25: 15:36
+    pdf: '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M14 3v4h4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 11v6m0 0 2.3-2.3M12 17l-2.3-2.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
   };
   let preferences = { ...defaults };
   let host = null;
+  // ai coding: 记录注入的宿主样式表以便退出阅读时移除并恢复打印行为 2026/11/25: 15:36
+  let hostStyle = null;
   let shadow = null;
   let viewport = null;
   let isOpening = false;
@@ -41,7 +50,6 @@
   let cssPromise = null;
   let cleanup = [];
   let previousFocus = null;
-  let previousOverflow = null;
   // ai coding: 记录原网页可交互状态以便退出阅读时恢复 2026/11/05: 09:26
   let previousBodyInert = false;
   let previousReaderScroll = 0;
@@ -608,6 +616,29 @@
     return true;
   }
 
+  // ai coding: 导出 PDF 时先收起弹层并等待懒加载图片完成再调起系统打印 2026/11/25: 15:36
+  async function exportPDF() {
+    if (!host || !shadow) return;
+    closeSettings();
+    closeShareCard();
+    const images = [...shadow.querySelectorAll(".article-content img")];
+    for (const image of images) {
+      if (image.loading === "lazy") image.loading = "eager";
+    }
+    const pending = images.filter((image) => !image.complete);
+    if (pending.length) {
+      await Promise.race([
+        Promise.allSettled(pending.map((image) => new Promise((resolve) => {
+          image.addEventListener("load", resolve, { once: true });
+          image.addEventListener("error", resolve, { once: true });
+        }))),
+        new Promise((resolve) => setTimeout(resolve, 3000)),
+      ]);
+    }
+    if (!host) return;
+    window.print();
+  }
+
   // ai coding: 增加纸张主题、纹理强度与段落间距和内容宽度设置界面 2026/11/05: 09:52
   function renderArticle(article) {
     shadow.innerHTML = `<style></style>
@@ -641,6 +672,8 @@
             <span class="toolbar-separator close-separator"></span>
             <!-- ai coding: 增加选区分享工具栏入口并在未选正文时禁用 2026/11/05: 13:21 -->
             <button class="icon-button share-selection" aria-label="将选中文字生成分享卡片" title="选取正文后生成分享卡片" disabled><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 0L8 7m4-4 4 4M7 10H5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1h-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <!-- ai coding: 新增导出 PDF 按钮以将整篇文章打印或另存为 PDF 2026/11/25: 15:36 -->
+            <button class="icon-button pdf-export" aria-label="导出 PDF" title="导出 PDF · 打印目标选择「另存为 PDF」">${icons.pdf}</button>
             <button class="icon-button close-reader" aria-label="退出阅读模式" title="退出阅读模式 · Esc">${icons.close}</button>
           </div>
         </header>
@@ -727,6 +760,8 @@
 
   function bindControls() {
     listen(shadow.querySelector(".close-reader"), "click", close);
+    // ai coding: 点击导出 PDF 按钮进入打印流程 2026/11/25: 15:36
+    listen(shadow.querySelector(".pdf-export"), "click", () => { exportPDF(); });
     listen(shadow.querySelector(".back-top"), "click", () => {
       viewport.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
     });
@@ -854,17 +889,15 @@
       // ai coding: 阅读层开启期间阻止原网页获得焦点与辅助阅读访问 2026/11/05: 09:26
       previousBodyInert = document.body?.inert || false;
       if (document.body) document.body.inert = true;
-      previousOverflow = {
-        value: document.documentElement.style.getPropertyValue("overflow"),
-        priority: document.documentElement.style.getPropertyPriority("overflow"),
-      };
       host = document.createElement("div");
       host.id = "__readmode_root__";
-      host.style.cssText = "all:initial!important;position:fixed!important;inset:0!important;z-index:2147483647!important;display:block!important;width:100vw!important;height:100vh!important;isolation:isolate!important;color-scheme:normal!important;";
+      // ai coding: 宿主布局改由注入样式表驱动并支持导出 PDF 时切换为文档流 2026/11/25: 15:36
+      hostStyle = document.createElement("style");
+      hostStyle.textContent = HOST_STYLE_TEXT;
+      (document.head || document.documentElement).append(hostStyle);
       // ai coding: 使用开放影子根使预览中的点击拖动可访问并保留样式隔离 2026/11/05: 10:26
       shadow = host.attachShadow({ mode: "open" });
       document.documentElement.append(host);
-      document.documentElement.style.setProperty("overflow", "hidden", "important");
       if (articleCache) renderArticle(articleCache);
       else renderEmpty();
       shadow.querySelector("style").textContent = css;
@@ -896,8 +929,9 @@
     shadow = null;
     viewport = null;
     headings = [];
-    if (previousOverflow?.value) document.documentElement.style.setProperty("overflow", previousOverflow.value, previousOverflow.priority);
-    else document.documentElement.style.removeProperty("overflow");
+    // ai coding: 移除注入的宿主样式表以恢复原网页滚动与打印行为 2026/11/25: 15:36
+    hostStyle?.remove();
+    hostStyle = null;
     // ai coding: 恢复打开阅读模式前的原网页交互状态 2026/11/05: 09:26
     if (document.body) document.body.inert = previousBodyInert;
     if (previousFocus?.isConnected) previousFocus.focus({ preventScroll: true });

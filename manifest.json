@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "ReadMode",
-  "version": "1.5.1",
-  "description": "Safari 风格阅读模式，支持黑白皮肤、排版调节、隐藏正文图片、选取文字生成分享卡片和原文二维码。",
+  "version": "1.6.0",
+  "description": "Safari 风格阅读模式，支持黑白皮肤、排版调节、隐藏正文图片、分享卡片、原文二维码和一键导出 PDF。",
   "permissions": ["activeTab", "scripting", "storage"],
   "host_permissions": ["http://*/*", "https://*/*"],
   "content_scripts": [
